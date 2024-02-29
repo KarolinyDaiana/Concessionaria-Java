@@ -1,3 +1,5 @@
+import Veiculos.Veiculo;
+
 public class Gerente extends Funcionario {
     public Gerente(String nome, String nomeUsuario, String senha, int cadastro, double salario, double comissao, int vendas) {
         super(nome, nomeUsuario, senha, cadastro, salario, comissao, vendas);
