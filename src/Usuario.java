@@ -48,4 +48,10 @@ public abstract class Usuario {
     public static void addUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
+    public static void removeUsuario(Usuario usuario) {
+        usuarios.remove(usuario);
+    }
+    public static ArrayList<Usuario> getUsarios(){
+        return usuarios;
+    }
 }

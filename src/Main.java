@@ -13,12 +13,12 @@ public class Main {
         System.out.println("Concessionária Zeca Urubu!");
 
         Usuario user = new Cliente("karol", "karol", "senha");
-        Gerente userr = new Gerente("karsol", "karol", "senha", 123, 11.1, 2, 1);
+        Usuario gerente = new Gerente("ana", "ana", "senha", 123, 10, 10);
+        Usuario vendedor = new Vendedor("pamela", "pamela", "senha", 321, 100,  10);
 
         Usuario.addUsuario(user);
-        Usuario.addUsuario(userr);
-
-        Usuario usuarioLogado = Usuario.login("karol", "senha");
+        Usuario.addUsuario(gerente);
+        Usuario.addUsuario(vendedor);
 
         Veiculo caminhao = new Caminhao("aa", true, "aaa", 1111, "aa", 111.1, 1111.1, 111, "metros", "altura", 1211);
         Veiculo.addVeiculo(caminhao);
@@ -117,7 +117,14 @@ public class Main {
 //            case 10 ->
 //            case 11 ->
 //            case 12 ->
+            case 17 -> verPagamentoVendedor();
         }
+    }
+
+    private static void verPagamentoVendedor() {
+        System.out.printf("Digite o cadastro do vendedor desejado: ");
+        int cadastro = sc.nextInt();
+        System.out.println(Gerente.verPagamentoVendedor(cadastro));
     }
 
     public static void verVeiculosEmEstoque() {
