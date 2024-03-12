@@ -1,3 +1,5 @@
+import Veiculos.Veiculo;
+
 import java.util.ArrayList;
 
 public class Cliente extends Usuario {
@@ -7,6 +9,9 @@ public class Cliente extends Usuario {
 
     private static ArrayList<Veiculo> meusVeiculos = new ArrayList<>();
 
+    private static void addMeusVeiculos(Veiculo veiculo) {
+        meusVeiculos.add(veiculo);
+    }
     private ArrayList<Veiculo> verMeusVeiculos() {
         return meusVeiculos;
     }
