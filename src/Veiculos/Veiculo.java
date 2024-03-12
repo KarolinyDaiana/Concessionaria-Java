@@ -14,7 +14,6 @@ public class Veiculo {
     double kmRodados;
     double preco;
     double precoTabela;
-
     int estoque;
 
     public String getFabricante() {
@@ -62,13 +61,18 @@ public class Veiculo {
     public int getEstoque() {return estoque;}
     public void setEstoque(int estoque) {this.estoque = estoque;}
 
+    public static void removeVeiculo(String modelo) {
+        for (Veiculo veiculoRemovido : veiculos) {
+            if (veiculoRemovido.modelo.equals(modelo)) {
+                veiculos.remove(veiculoRemovido);
+                break;
+            }
+        }
+    }
+
     public static void addVeiculo(Veiculo veiculo) {
         veiculos.add(veiculo);
     }
-    public static void removeVeiculo(Veiculo veiculo) {
-        veiculos.remove(veiculo);
-    }
-
     public static ArrayList<Veiculo> getVeiculos() {
         return veiculos;
     }
@@ -84,13 +88,6 @@ public class Veiculo {
         this.precoTabela = precoTabela;
     }
 
-    public static Veiculo veiculosEmEstoque() {
-        for (Veiculo veiculo: veiculos) {
-            if(veiculo.getEstoque() > 0) {
-                return veiculo;
-            }
-        } return null;
-    }
     public static Veiculo procurarVeiculo(String modelo) {
         for (Veiculo veiculo: veiculos) {
             if(veiculo.getModelo().equals(modelo)) {

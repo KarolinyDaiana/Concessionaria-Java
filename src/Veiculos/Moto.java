@@ -10,7 +10,7 @@ public class Moto extends Veiculo {
 
     @Override
     public String toString() {
-        return "Fabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
-                "\nKm rodados:" + kmRodados + "\nPreço: " + preco + "\nPortas: " + "\nPode ter sidecar: " + sidecar;
+        return "\n\nFabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
+                "\nKm rodados:" + kmRodados + "\nPreço: " + preco + "\nPode ter sidecar: " + sidecar;
     }
 }

@@ -25,19 +25,26 @@ public class Funcionario extends Usuario {
         this.vendas = vendas;
     }
 
-    private int cadastro;
+    private static int cadastro;
     private double salario;
-    private double comissao;
     private int vendas;
 
-    public static String calcularPagamento(Funcionario funcionario) {
-        double pagamento = 0;
-        if(funcionario instanceof Vendedor) {
-            pagamento = (0.001 * funcionario.getVendas()) + funcionario.getSalario();
-        } else if (funcionario instanceof Gerente) {
-            pagamento = (0.001 * funcionario.getVendas()) + funcionario.getSalario();
+    public String calcularPagamento() {
+        double pagamento;
+        double comissao = 0.01;
+        if (this instanceof Gerente) {
+            comissao = 0.02;
         }
-        return "\nPagamento mensal do funcionário de cadastro " + funcionario.getCadastro() + ", pagamento: " + pagamento;
+        pagamento = (comissao * this.getVendas()) + this.getSalario();
+        return "\nPagamento mensal do funcionário de cadastro " + this.getCadastro() + ", pagamento: " + pagamento;
     }
 
+    @Override
+    public String opcoesDeEscolha() {
+        return super.opcoesDeEscolha() +  ("""
+                4  - Vender veículo
+                5  - Procurar cliente
+                6  - Ver pagamento
+                """);
+    }
 }

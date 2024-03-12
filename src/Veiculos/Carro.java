@@ -11,7 +11,7 @@ public class Carro extends Veiculo {
     }
     @Override
     public String toString() {
-        return "Fabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
+        return "\n\nFabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
                 "\nKm rodados:" + kmRodados + "\nPreço: " + preco + "\nPortas: " + portas + "\nTração: " + tracao;
     }
 }

@@ -15,7 +15,7 @@ public class Lancha extends Veiculo {
 
     @Override
     public String toString() {
-        return "\nFabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
+        return "\n\nFabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno: " + ano + "\nCor: " + cor +
                 "\nKm rodados:" + kmRodados + "\nPreço: " + preco + "\nCapacidade: " + capacidade +
                 "\nVelocidade: " + velocidade + "\nAltura: " + altura;
     }
