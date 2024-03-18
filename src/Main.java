@@ -1,3 +1,5 @@
+import Exceptions.SenhaIncorretaException;
+import Exceptions.UsuarioNaoEncontradoException;
 import Veiculos.*;
 
 import java.util.Scanner;
@@ -36,11 +38,13 @@ public class Main {
     public static void inicio() {
         System.out.println("Bem vindo à concessionária da virada! \n");
         System.out.println("""
-                1 - Login
-                2 - Cadastro
-                3 - Sair
-                4 - Ver veículos em estoque
-                5 - Ver detalhes de um veículo
+                ----------------------------------
+                |1 | Login                       |
+                |2 | Cadastro                    |
+                |3 | Sair                        |    
+                |4 | Ver veículos em estoque     |
+                |5 | Ver detalhes de um veículo  |
+                ----------------------------------
                 """);
         int escolha = sc.nextInt();
         switch (escolha) {
@@ -51,17 +55,35 @@ public class Main {
             case 5 -> procurarModelo();
         }
     }
+    //para saber onde colocar a exception
+    //qual vai ser a implementação, vai ter toos os recursos necessarios?
     public static void login(){
         do {
             System.out.printf("\nDigite o nome de usuário: ");
             String nome = sc.next();
             System.out.printf("Digite a senha: ");
             String senha = sc.next();
+            try {
+                usuarioLogado = Usuario.login(nome, senha);
+                menu();
+            } catch (UsuarioNaoEncontradoException exception) {
+                System.err.println(exception.getMessage());
+                System.out.println("""
+                        \nDeseja realizar o cadastro:
+                        1- Sim
+                        Outro- Não
+                        """);
+                int escolha = sc.nextInt();
+                if(escolha == 1) {
+                    cadastro();
+                }
+            } catch (SenhaIncorretaException exception) {
+                System.err.println(exception.getMessage());
 
-            usuarioLogado = Usuario.login(nome, senha);
+            }
 
         }while (usuarioLogado == null);
-        menu();
+
     }
     public static void cadastro(){
         System.out.printf("\nNome: ");
@@ -72,6 +94,7 @@ public class Main {
         String senha = sc.next();
         Usuario novoUsuario = new Cliente(nome, nomeUsuario, senha);
         Usuario.addUsuario(novoUsuario);
+        usuarioLogado = novoUsuario;
 
         menu();
     }

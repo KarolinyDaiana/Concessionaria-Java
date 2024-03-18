@@ -1,3 +1,5 @@
+import Exceptions.SenhaIncorretaException;
+import Exceptions.UsuarioNaoEncontradoException;
 import Veiculos.Veiculo;
 
 import java.util.ArrayList;
@@ -35,12 +37,16 @@ public abstract class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public static Usuario login(String user, String senha){
-        for (Usuario usuario: usuarios) {
-            if(usuario.user.equals(user) && usuario.senha.equals(senha)) {
-                return usuario;
+    public static Usuario login(String user, String senha) throws UsuarioNaoEncontradoException, SenhaIncorretaException{
+        for (Usuario usuario: usuarios){
+            if(usuario.user.equals(user)) {
+                if (usuario.senha.equals(senha)) {
+                    return usuario;
+                }
+                throw new SenhaIncorretaException();
             }
-        } return null;
+        } throw new UsuarioNaoEncontradoException(user);
+
     }
 
     public String opcoesDeEscolha() {
@@ -75,6 +81,7 @@ public abstract class Usuario {
         }
         return null;
     }
+
 
     public void addMeusVeiculos(Veiculo veiculo) {
         meusVeiculos.add(veiculo);
